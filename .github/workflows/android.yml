@@ -1,0 +1,50 @@
+
+name: VYRO Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kaynak kodunu al
+        uses: actions/checkout@v4
+
+      - name: Node.js kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Java kur
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Android SDK kur
+        uses: android-actions/setup-android@v3
+
+      - name: Bağımlılıkları kur
+        working-directory: VYRO_Android_Studio_Olmadan_APK
+        run: npm install
+
+      - name: Android projesini oluştur
+        working-directory: VYRO_Android_Studio_Olmadan_APK
+        run: npx cap add android
+
+      - name: Dosyaları eşitle
+        working-directory: VYRO_Android_Studio_Olmadan_APK
+        run: npx cap sync android
+
+      - name: APK oluştur
+        working-directory: VYRO_Android_Studio_Olmadan_APK/android
+        run: chmod +x gradlew && ./gradlew assembleDebug
+
+      - name: APK indirilebilir yap
+        uses: actions/upload-artifact@v4
+        with:
+          name: VYRO-APK
+          path: VYRO_Android_Studio_Olmadan_APK/android/app/build/outputs/apk/debug/app-debug.apk
