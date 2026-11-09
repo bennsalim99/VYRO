@@ -4,8 +4,7 @@ name: VYRO Android APK
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
 
 permissions:
   contents: read
@@ -32,13 +31,11 @@ jobs:
       - name: Android SDK kur
         uses: android-actions/setup-android@v3
         with:
-          packages: |
-            platform-tools
-            platforms;android-35
-            build-tools;35.0.0
+          packages: 'platform-tools'
 
-      - name: Android SDK kontrol
-        run: sdkmanager --list_installed
+      - name: Gerekli Android paketlerini yükle
+        run: |
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
 
       - name: Bağımlılıkları kur
         working-directory: VYRO_Android_Studio_Olmadan_APK
