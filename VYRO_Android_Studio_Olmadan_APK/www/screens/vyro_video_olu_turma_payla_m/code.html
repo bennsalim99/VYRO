@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VYRO - Video Oluşturma &amp; Paylaşım Studio</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#6ffbbe",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-fixed-variant": "#5516be",
+            "secondary-fixed-dim": "#c6c0ff",
+            "surface-container-lowest": "#0d0e12",
+            "inverse-primary": "#6d3bd7",
+            "surface-tint": "#d0bcff",
+            "on-primary-fixed": "#23005c",
+            "surface-bright": "#38393e",
+            "secondary-fixed": "#e4dfff",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-tertiary": "#003824",
+            "primary-fixed": "#e9ddff",
+            "on-surface": "#e3e2e8",
+            "on-primary": "#3c0091",
+            "tertiary": "#4edea3",
+            "secondary-container": "#3e1fd1",
+            "on-background": "#e3e2e8",
+            "on-error-container": "#ffdad6",
+            "surface-container-high": "#292a2e",
+            "on-primary-container": "#340080",
+            "error": "#ffb4ab",
+            "outline-variant": "#494454",
+            "surface-variant": "#343439",
+            "background": "#121317",
+            "tertiary-container": "#00a572",
+            "surface-container-low": "#1a1b20",
+            "surface-container": "#1e1f24",
+            "on-tertiary-fixed": "#002113",
+            "surface-container-highest": "#343439",
+            "inverse-on-surface": "#2f3035",
+            "primary-container": "#a078ff",
+            "on-error": "#690005",
+            "on-secondary": "#2700a1",
+            "inverse-surface": "#e3e2e8",
+            "on-secondary-fixed": "#150066",
+            "secondary": "#c6c0ff",
+            "on-secondary-container": "#b6afff",
+            "on-surface-variant": "#cbc3d7",
+            "error-container": "#93000a",
+            "surface-dim": "#121317",
+            "on-secondary-fixed-variant": "#3c1bcf",
+            "surface": "#121317",
+            "on-tertiary-container": "#00311f",
+            "outline": "#958ea0",
+            "primary-fixed-dim": "#d0bcff",
+            "primary": "#d0bcff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom Scrollbar for dark sleek layout */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232736;
+      border-radius: 4px;
+    }
+    .neon-purple-glow {
+      box-shadow: 0px 0px 18px rgba(139, 92, 246, 0.45);
+    }
+    .neon-purple-card {
+      box-shadow: 0px 4px 20px rgba(139, 92, 246, 0.12);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#08090D] text-on-surface antialiased min-h-screen flex flex-col font-body-md select-none overflow-x-hidden">
+<!-- TOP APP BAR (Dedicated Studio Header with Contextual Flow) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#111319]/80 backdrop-blur-xl px-margin py-space-sm flex justify-between items-center shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+<!-- Vazgeç Butonu -->
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary active:scale-95 transition-all text-label-md font-label-md">
+<span class="material-symbols-outlined text-[18px]">close</span>
+<span>Vazgeç</span>
+</button>
+<!-- Başlık -->
+<div class="flex items-center gap-1.5">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-wide">Yeni Gönderi</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+</div>
+<!-- Taslaklara Kaydet -->
+<button class="flex items-center gap-1 text-primary hover:text-primary-fixed active:scale-95 transition-all text-label-md font-label-md">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+<span>Taslaklar</span>
+</button>
+</header>
+<!-- MAIN STUDIO CANVAS -->
+<main class="flex-1 w-full max-w-md mx-auto pt-16 pb-28 px-margin flex flex-col gap-space-md">
+<!-- HIZLI EYLEM BAR: GALERİDEN SEÇ / VİDEO KAYDET -->
+<div class="grid grid-cols-2 gap-space-sm pt-2">
+<button class="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#111319] hover:bg-[#181B24] border border-[#232736] hover:border-primary/40 rounded-xl transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-primary text-[20px]">photo_library</span>
+<span class="text-label-md font-label-md text-on-surface">Galeriden Seç</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#111319] hover:bg-[#181B24] border border-[#232736] hover:border-primary/40 rounded-xl transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[#EF4444] text-[20px]" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<span class="text-label-md font-label-md text-on-surface">Video Kaydet</span>
+</button>
+</div>
+<!-- VİDEO ÖNİZLEME & MEDYA KONTROLLERİ BENTO KARTI -->
+<section class="bg-[#111319] border border-[#232736] rounded-xl p-space-md flex gap-space-md items-center relative overflow-hidden neon-purple-card">
+<!-- 9:16 Dikey Mini Video Oynatıcı -->
+<div class="relative w-28 h-44 rounded-lg overflow-hidden border border-[#2D3244] flex-shrink-0 group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A modern cinematic vertical mobile video frame showing an aesthetic nighttime urban city view with glowing neon purple and indigo street lights reflecting on wet pavement. The scene embodies futuristic cyberpunk mood, ambient deep black shadows, volumetric mist, and ultra high dynamic contrast ideal for vertical content." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAAxh0z6gIYEkumEnEfGcnFpDYuqt4wLUOgeH4Kyr3AOt7ffXejFpj1RSmp05aec6KVqP7Iqny1dsq56yg6iqDz_l1Su5w3iYMIcCCHUYu2Ca7AoKSHKJA9gNYGqsxit9BtJroKJmLd0gxwJ61onx9yihjY4AFeFicLtiwU_xyHC9jPpmHPu1HT-XgS6Wk2uWAI5Zi-qB5cqF10b1W-k_39bLOY-oQZj_xcEHxTBE"/>
+<!-- Video Karartma & Canlı Etiket -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#08090D]/90 via-transparent to-black/30 pointer-events-none"></div>
+<!-- Oynatıcı Durum & Süre -->
+<div class="absolute top-2 left-2 flex items-center gap-1 bg-[#111319]/80 backdrop-blur-md px-1.5 py-0.5 rounded text-[10px] text-tertiary font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>00:38</span>
+</div>
+<!-- Video Ortası Oynat İkonu -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-9 h-9 rounded-full bg-[#111319]/70 backdrop-blur-md border border-white/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<!-- Mini Kapak Değiştir Düğmesi -->
+<button class="absolute bottom-1.5 inset-x-1.5 py-1 bg-surface-container-highest/80 backdrop-blur-sm border border-outline-variant/30 rounded text-[10px] font-label-sm text-center text-on-surface hover:text-primary transition-colors">
+          Kapağı Değiştir
+        </button>
+</div>
+<!-- Medya Düzenleme Hızlı Aksiyonları -->
+<div class="flex-1 flex flex-col justify-between h-44 py-1">
+<div>
+<span class="text-label-sm font-label-sm text-primary tracking-widest uppercase">VYRO Studio HD</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-semibold mt-0.5">İstanbul Geceleri #03</h3>
+<p class="text-body-sm font-body-sm text-outline mt-1 line-clamp-2">4K 60fps • Dikey Format • Dolby Atmos Efekti Aktif</p>
+</div>
+<div class="space-y-2">
+<!-- Müzik Ekle Butonu -->
+<button class="w-full flex items-center justify-between px-3 py-2 bg-[#181B24] hover:bg-surface-variant border border-[#2D3244] rounded-lg transition-all active:scale-95">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-[18px]">music_note</span>
+<span class="text-label-md font-label-md text-on-surface truncate">Hyper - Neon Lights (Orijinal)</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+</button>
+<!-- Filtreler Butonu -->
+<button class="w-full flex items-center justify-between px-3 py-2 bg-[#181B24] hover:bg-surface-variant border border-[#2D3244] rounded-lg transition-all active:scale-95">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_fix_high</span>
+<span class="text-label-md font-label-md text-on-surface">Filtre &amp; Efektler (Mor Siber)</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">tune</span>
+</button>
+</div>
+</div>
+</section>
+<!-- AÇIKLAMA VE DETAY FORMU -->
+<section class="bg-[#111319] border border-[#232736] rounded-xl p-space-md flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">edit_note</span>
+<span>Açıklama &amp; Etiketler</span>
+</label>
+<span class="text-label-sm font-label-sm text-outline" id="char-counter">48 / 2200</span>
+</div>
+<div class="relative">
+<textarea class="w-full bg-[#08090D] border border-[#232736] focus:border-primary focus:ring-1 focus:ring-primary/40 rounded-lg p-3 text-body-sm font-body-sm text-on-surface placeholder:text-[#64748B] resize-none outline-none transition-all duration-200" id="description-input" placeholder="Açıklama Yaz... (@bahset, #etiket ekle)" rows="4">Boğaz hattında gece sürüşü ve neon ışıklar. @kaan ile birlikte! #istanbul #geceler #vyro</textarea>
+</div>
+<!-- Hızlı Etiket Ekleme Çipleri -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-label-sm font-label-sm">
+<button class="px-2.5 py-1 bg-[#181B24] hover:bg-primary/20 border border-[#2D3244] hover:border-primary/50 text-secondary-fixed rounded-full transition-all active:scale-90 flex items-center gap-1">
+<span>#trendler</span>
+</button>
+<button class="px-2.5 py-1 bg-[#181B24] hover:bg-primary/20 border border-[#2D3244] hover:border-primary/50 text-secondary-fixed rounded-full transition-all active:scale-90 flex items-center gap-1">
+<span>#geceakışı</span>
+</button>
+<button class="px-2.5 py-1 bg-[#181B24] hover:bg-primary/20 border border-[#2D3244] hover:border-primary/50 text-secondary-fixed rounded-full transition-all active:scale-90 flex items-center gap-1">
+<span>@arkadaşını_ekle</span>
+</button>
+<button class="px-2.5 py-1 bg-[#181B24] hover:bg-primary/20 border border-[#2D3244] hover:border-primary/50 text-secondary-fixed rounded-full transition-all active:scale-90 flex items-center gap-1">
+<span>#müzik</span>
+</button>
+</div>
+</section>
+<!-- ÖZEL VYRO ÖZELLİK AYARLARI (ZİNCİRLEME & SERİ) -->
+<section class="bg-[#111319] border border-[#232736] rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-[#232736]/60 pb-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 border border-primary/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</div>
+<div>
+<span class="text-label-lg font-label-lg text-on-surface block font-bold">Video Zincirine Bağla</span>
+<span class="text-body-sm font-body-sm text-outline block text-[12px]">Önceki bir videonun devamı mı? (Zincir Seç)</span>
+</div>
+</div>
+<!-- Mor Toggle Switch (Açık) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#232736] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Seri Seç Seçeneği -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">playlist_play</span>
+<span>Seri Seç</span>
+</label>
+<button class="text-label-sm font-label-sm text-primary hover:underline flex items-center gap-0.5">
+<span>Yeni Seri Oluştur</span>
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<!-- Seçili Seri Kartı -->
+<div class="flex items-center gap-2 p-2.5 bg-primary/10 border-2 border-primary rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+<div class="overflow-hidden">
+<span class="text-label-md font-label-md text-on-surface font-semibold block truncate">İstanbul Geceleri</span>
+<span class="text-[11px] text-primary font-medium block">Bölüm 3</span>
+</div>
+</div>
+<!-- Seri Oluştur / Seç Kartı -->
+<div class="flex items-center gap-2 p-2.5 bg-[#181B24] border border-[#2D3244] hover:border-outline rounded-lg cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-outline text-[20px]">add_circle_outline</span>
+<div class="overflow-hidden">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium block truncate">Başka Bir Seri</span>
+<span class="text-[11px] text-outline block">Mevcut listelerden</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- GİZLİLİK VE İZİNLER -->
+<section class="bg-[#111319] border border-[#232736] rounded-xl p-space-md flex flex-col gap-space-md">
+<div>
+<label class="text-label-md font-label-md text-on-surface font-semibold flex items-center gap-1.5 mb-2.5">
+<span class="material-symbols-outlined text-primary text-[18px]">visibility</span>
+<span>Görünürlük Ayarları</span>
+</label>
+<!-- Çip Seçim Grubu -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Herkes (Seçili) -->
+<button class="py-2 px-1 text-center rounded-lg bg-primary text-on-primary-container font-label-md text-label-md font-bold shadow-[0_0_10px_rgba(139,92,246,0.3)] transition-transform active:scale-95 flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">public</span>
+<span>Herkes</span>
+</button>
+<!-- Sadece Arkadaşlar -->
+<button class="py-2 px-1 text-center rounded-lg bg-[#181B24] border border-[#2D3244] text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors active:scale-95 flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>Arkadaşlar</span>
+</button>
+<!-- Gizli -->
+<button class="py-2 px-1 text-center rounded-lg bg-[#181B24] border border-[#2D3244] text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors active:scale-95 flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Gizli</span>
+</button>
+</div>
+</div>
+<!-- İzin Toggle Listesi -->
+<div class="space-y-3 pt-1 border-t border-[#232736]/60">
+<!-- Yorumlara İzin Ver -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]">chat_bubble_outline</span>
+<span class="text-body-md font-body-md text-on-surface">Yorumlara İzin Ver</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#232736] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Video İndirmeye İzin Ver -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]">download</span>
+<span class="text-body-md font-body-md text-on-surface">Video İndirmeye İzin Ver</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-[#232736] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- ALT KISIM: PARLAYAN MOR YAYINLA BUTONU -->
+<div class="pt-2">
+<button class="w-full py-4 rounded-xl font-label-lg text-label-lg font-bold text-white flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 neon-purple-glow" style="background: linear-gradient(90deg, #8B5CF6 0%, #6D5BFF 100%);">
+<span>Yayınla</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- BOTTOM NAVBAR (Shared Component: 5 Sekmeli Alt Bar, 'Oluştur' Aktif) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin py-space-xs pb-safe bg-surface-container-low/80 dark:bg-surface-container-low/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<!-- Ana Sayfa (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Ana Sayfa</span>
+</a>
+<!-- Keşfet (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="text-label-sm font-label-sm mt-0.5">Keşfet</span>
+</a>
+<!-- Oluştur (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform duration-150" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">add_box</span>
+<span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#d0bcff]"></span>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-primary mt-0.5">Oluştur</span>
+</a>
+<!-- Canlı (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">sensors</span>
+<span class="text-label-sm font-label-sm mt-0.5">Canlı</span>
+</a>
+<!-- Profil (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-label-sm font-label-sm mt-0.5">Profil</span>
+</a>
+</nav>
+<!-- Dynamic Character Counter Script -->
+<script>
+    const textarea = document.getElementById('description-input');
+    const counter = document.getElementById('char-counter');
+    if (textarea && counter) {
+      textarea.addEventListener('input', () => {
+        counter.textContent = `${textarea.value.length} / 2200`;
+      });
+    }
+  </script>
+</body></html>

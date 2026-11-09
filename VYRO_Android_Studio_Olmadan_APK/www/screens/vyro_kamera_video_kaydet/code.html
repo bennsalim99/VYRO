@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VYRO - Kamera &amp; Video Kaydet</title>
+<!-- Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#2700a1",
+            "on-primary-fixed-variant": "#5516be",
+            "on-tertiary": "#003824",
+            "on-error": "#690005",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#e9ddff",
+            "on-secondary-fixed": "#150066",
+            "secondary-container": "#3e1fd1",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-secondary-container": "#b6afff",
+            "on-background": "#e3e2e8",
+            "primary-fixed-dim": "#d0bcff",
+            "surface-container": "#1e1f24",
+            "tertiary-fixed": "#6ffbbe",
+            "secondary-fixed": "#e4dfff",
+            "on-secondary-fixed-variant": "#3c1bcf",
+            "outline-variant": "#494454",
+            "on-surface": "#e3e2e8",
+            "surface-container-lowest": "#0d0e12",
+            "surface-bright": "#38393e",
+            "secondary-fixed-dim": "#c6c0ff",
+            "on-primary-container": "#340080",
+            "tertiary-container": "#00a572",
+            "surface-dim": "#121317",
+            "secondary": "#c6c0ff",
+            "on-primary": "#3c0091",
+            "surface": "#121317",
+            "on-primary-fixed": "#23005c",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#00311f",
+            "surface-tint": "#d0bcff",
+            "tertiary": "#4edea3",
+            "surface-container-highest": "#343439",
+            "surface-container-low": "#1a1b20",
+            "primary": "#d0bcff",
+            "inverse-primary": "#6d3bd7",
+            "surface-container-high": "#292a2e",
+            "surface-variant": "#343439",
+            "inverse-on-surface": "#2f3035",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed-variant": "#005236",
+            "outline": "#958ea0",
+            "on-tertiary-fixed": "#002113",
+            "on-surface-variant": "#cbc3d7",
+            "primary-container": "#a078ff",
+            "inverse-surface": "#e3e2e8",
+            "background": "#121317"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "gutter": "0.75rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom pulsing keyframes for shutter button and live indicators */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(160, 120, 255, 0.7); }
+      70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 14px rgba(160, 120, 255, 0); }
+      100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(160, 120, 255, 0); }
+    }
+    .animate-pulse-ring {
+      animation: pulse-ring 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+    @keyframes audio-bounce {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+    .bar-1 { animation: audio-bounce 0.8s ease-in-out infinite; }
+    .bar-2 { animation: audio-bounce 0.8s ease-in-out infinite 0.2s; }
+    .bar-3 { animation: audio-bounce 0.8s ease-in-out infinite 0.4s; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md select-none overflow-hidden m-0 p-0 h-screen w-screen flex justify-center items-center">
+<!-- Mobile Viewport Container (Simulating Android 9:16 Full Screen Edge-to-Edge) -->
+<main class="relative w-full h-full max-w-md bg-surface-container-lowest overflow-hidden flex flex-col justify-between shadow-2xl">
+<!-- 1. Full-screen Camera Viewfinder Background Layer -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.06]" data-alt="A cinematic first-person perspective shot of a stylish creator filming in a modern cyberpunk nighttime music studio. Moody violet, deep indigo and neon ambient backlights illuminate high-tech mixing consoles, synthesizer keys, and soft reflections on acoustic panels in the background. The atmosphere is vibrant, ultra-clear, sleek, and filled with glowing purple and magenta rim lights, perfectly suited for an energetic live social media recording." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOfz2k4Tz63mk_QgC9_7FgkQzighack1tIw2n8-6rFc6WWwFBrRSxmxxFoj3wQ4HByNh3D26VL3rXoX2S2Pm6u95xqavDeNlpDIlw60eN_rgUy3Su1zwrBTRZ82WHV2uNzVnhzTCnElsIjdFQ0Kdk47XK_myzlkv5cMO-n9xPosgMvewCUk-aIaWvp_RB8AEOpvjN58E-thSWb5ChqZTf_OD_SBTOMzzvIUAJ3P58"/>
+<!-- Soft vignette & edge shading for UI legibility -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-lowest/80 via-transparent to-surface-container-lowest/90 pointer-events-none"></div>
+<!-- Framing Grid Overlay (Subtle 3x3 camera rule-of-thirds) -->
+<div class="absolute inset-0 grid grid-cols-3 grid-rows-3 pointer-events-none opacity-15">
+<div class="border-r border-b border-on-surface"></div>
+<div class="border-r border-b border-on-surface"></div>
+<div class="border-b border-on-surface"></div>
+<div class="border-r border-b border-on-surface"></div>
+<div class="border-r border-b border-on-surface"></div>
+<div class="border-b border-on-surface"></div>
+<div class="border-r border-on-surface"></div>
+<div class="border-r border-on-surface"></div>
+<div></div>
+</div>
+<!-- Center Auto-Focus Reticle indicator -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
+<div class="w-16 h-16 border border-primary/60 rounded-lg flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- 2. Top Header & Control Bar -->
+<header class="relative z-20 pt-8 px-margin pb-space-sm flex flex-col gap-space-sm">
+<!-- Top Action Row -->
+<div class="flex items-center justify-between">
+<!-- Close / Cancel Button -->
+<button aria-label="Kapat" class="w-11 h-11 rounded-full bg-surface-container-low/60 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface hover:text-primary active:scale-90 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<!-- Centered Music Selector Pill -->
+<button class="group flex items-center gap-space-sm px-4 py-2 rounded-full bg-surface-container-low/75 backdrop-blur-xl border border-primary-container/40 shadow-[0_0_16px_rgba(160,120,255,0.25)] active:scale-95 transition-all duration-150" type="button">
+<div class="flex items-end gap-[2px] h-3.5 pr-0.5 text-primary">
+<span class="w-[3px] bg-primary rounded-full bar-1"></span>
+<span class="w-[3px] bg-primary rounded-full bar-2"></span>
+<span class="w-[3px] bg-primary rounded-full bar-3"></span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold tracking-wide flex items-center gap-1">
+            Ses Ekle
+            <span class="text-primary-fixed-dim text-body-sm font-normal">· 15 sn</span>
+</span>
+<span class="material-symbols-outlined text-primary text-[18px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+<!-- Flash Quick Toggle -->
+<button aria-label="Flaş" class="w-11 h-11 rounded-full bg-surface-container-low/60 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface hover:text-primary active:scale-90 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">flash_on</span>
+</button>
+</div>
+<!-- Segment Progress Bar (15s visual guide) -->
+<div class="w-full flex items-center gap-1 px-1">
+<div class="h-1 flex-1 bg-primary rounded-full shadow-[0_0_8px_rgba(208,188,255,0.6)]"></div>
+<div class="h-1 flex-1 bg-outline-variant/40 rounded-full"></div>
+<div class="h-1 flex-1 bg-outline-variant/40 rounded-full"></div>
+</div>
+</header>
+<!-- 3. Right Vertical Camera Tool Palette (Glassmorphism & Turkish Labels) -->
+<aside class="absolute right-3 top-28 z-20 flex flex-col items-center gap-3">
+<!-- Tool 1: Çevir (Flip Camera) -->
+<button class="group flex flex-col items-center gap-1 active:scale-90 transition-transform duration-150" type="button">
+<div class="w-11 h-11 rounded-full bg-surface-container-low/70 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface group-hover:text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px] group-hover:rotate-180 transition-transform duration-300">flip_camera_android</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">Çevir</span>
+</button>
+<!-- Tool 2: Hız (Speed) -->
+<button class="group flex flex-col items-center gap-1 active:scale-90 transition-transform duration-150" type="button">
+<div class="w-11 h-11 rounded-full bg-surface-container-low/70 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface group-hover:text-primary shadow-sm">
+<span class="font-label-md text-label-md font-bold text-primary">1x</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">Hız</span>
+</button>
+<!-- Tool 3: Filtreler (Filters) -->
+<button class="group flex flex-col items-center gap-1 active:scale-90 transition-transform duration-150" type="button">
+<div class="w-11 h-11 rounded-full bg-surface-container-low/70 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface group-hover:text-primary shadow-sm relative">
+<span class="material-symbols-outlined text-[22px]">auto_fix_high</span>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">Filtreler</span>
+</button>
+<!-- Tool 4: Zamanlayıcı (Timer) -->
+<button class="group flex flex-col items-center gap-1 active:scale-90 transition-transform duration-150" type="button">
+<div class="w-11 h-11 rounded-full bg-surface-container-low/70 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface group-hover:text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">Zamanlayıcı</span>
+</button>
+<!-- Tool 5: Rötuş (Beauty Retouch) -->
+<button class="group flex flex-col items-center gap-1 active:scale-90 transition-transform duration-150" type="button">
+<div class="w-11 h-11 rounded-full bg-surface-container-low/70 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface group-hover:text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">face_retouching_natural</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">Rötuş</span>
+</button>
+<!-- Tool 6: Flaş Modu -->
+<button class="group flex flex-col items-center gap-1 active:scale-90 transition-transform duration-150" type="button">
+<div class="w-11 h-11 rounded-full bg-surface-container-low/70 backdrop-blur-xl border border-outline-variant/30 flex items-center justify-center text-on-surface group-hover:text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">bolt</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">Flaş</span>
+</button>
+</aside>
+<!-- 4. Bottom Controls: Duration Selector & Record Triggers -->
+<div class="relative z-20 pb-8 pt-4 px-margin flex flex-col items-center gap-4 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent">
+<!-- Video Duration / Format Carousel Selector -->
+<div class="flex items-center justify-center gap-1 bg-surface-container-low/80 backdrop-blur-xl px-2 py-1 rounded-full border border-outline-variant/30 shadow-lg">
+<!-- 15 sn - ACTIVE MODE -->
+<button class="px-3.5 py-1 rounded-full bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-fixed font-label-md text-label-md font-bold shadow-[0_0_12px_rgba(160,120,255,0.45)]" type="button">
+          15 sn
+        </button>
+<!-- 60 sn -->
+<button class="px-3 py-1 rounded-full text-on-surface-variant font-label-md text-label-md hover:text-on-surface active:scale-95 transition-all" type="button">
+          60 sn
+        </button>
+<!-- 10 dk -->
+<button class="px-3 py-1 rounded-full text-on-surface-variant font-label-md text-label-md hover:text-on-surface active:scale-95 transition-all" type="button">
+          10 dk
+        </button>
+<!-- Fotoğraf Modu -->
+<button class="px-3 py-1 rounded-full text-on-surface-variant font-label-md text-label-md hover:text-on-surface active:scale-95 transition-all" type="button">
+          Fotoğraf
+        </button>
+</div>
+<!-- Main Shutter & Companion Action Buttons Row -->
+<div class="w-full flex items-center justify-between px-2 pt-1">
+<!-- Left: Galeri / Medya Seçimi -->
+<div class="flex flex-col items-center gap-1.5 w-16">
+<button aria-label="Galeriden Seç" class="relative w-12 h-12 rounded-xl overflow-hidden border-2 border-outline-variant/60 shadow-md group active:scale-90 transition-transform duration-150" type="button">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-200" data-alt="A modern artistic aesthetic thumbnail preview of urban nightlife architecture with vibrant indigo and purple reflections, representing a user photo gallery item." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb7FFUOE4RloBbMhIOeh1keFiymAK5lvOcOhbg0oYeZqEuzAy8icaXYkL14TlK5GDErOllOoqbCsf-2xEF4bAprOFnMrQJjje4oDIOKbYZeMuls0CZfxN1VqrVFGLOm16LXeWmbXbMLdACHfR17cezgbLEaZcc9Ht6KoVeH_ychs6TC_tCa13g1g8A-EW_fMrqzfrmzJSr9Tz9g8kyaEV_qE5F8eEdQcPCoxIKMC8"/>
+<div class="absolute inset-0 bg-surface-container-lowest/20"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-primary text-on-primary-container rounded-tl flex items-center justify-center">
+<span class="material-symbols-outlined text-[11px]">photo_library</span>
+</div>
+</button>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center font-medium">Galeri</span>
+</div>
+<!-- Center: Giant Shutter / Video Record Button -->
+<div class="relative flex items-center justify-center">
+<!-- Ambient Neon Glow ring -->
+<div class="absolute w-24 h-24 rounded-full bg-primary-container/20 blur-md pointer-events-none animate-pulse-ring"></div>
+<!-- Outer Neon Purple Ring -->
+<button aria-label="Kaydı Başlat" class="relative w-20 h-20 rounded-full border-[3px] border-primary-container p-1 flex items-center justify-center bg-transparent active:scale-90 transition-transform duration-150 cursor-pointer shadow-[0_0_24px_rgba(160,120,255,0.4)]" id="record-button" type="button">
+<!-- Inner Glowing Record Core -->
+<div class="w-full h-full rounded-full bg-gradient-to-tr from-error to-primary flex items-center justify-center shadow-inner transition-all duration-200">
+<div class="w-6 h-6 rounded-full bg-on-background/95"></div>
+</div>
+</button>
+</div>
+<!-- Right: Efektler / Sihir Çubuğu -->
+<div class="flex flex-col items-center gap-1.5 w-16">
+<button aria-label="Efektler ve Şablonlar" class="w-12 h-12 rounded-xl bg-surface-container-low/75 backdrop-blur-xl border border-primary-container/40 flex items-center justify-center text-primary shadow-[0_0_12px_rgba(160,120,255,0.2)] active:scale-90 transition-all duration-150 group" type="button">
+<span class="material-symbols-outlined text-[26px] group-hover:rotate-12 transition-transform duration-200" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+<span class="font-label-sm text-label-sm text-primary font-medium">Efektler</span>
+</div>
+</div>
+<!-- Quick Tips / Chain Mode Tag -->
+<div class="flex items-center gap-1.5 text-on-surface-variant/70 font-label-sm text-label-sm tracking-wide">
+<span class="material-symbols-outlined text-[14px]">touch_app</span>
+<span>Kaydetmek için basılı tut veya dokun</span>
+</div>
+</div>
+</main>
+<!-- Interactive script for camera micro-interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const recordBtn = document.getElementById('record-button');
+      if (recordBtn) {
+        let isRecording = false;
+        recordBtn.addEventListener('click', () => {
+          isRecording = !isRecording;
+          const innerCore = recordBtn.querySelector('div');
+          if (isRecording) {
+            innerCore.classList.remove('rounded-full');
+            innerCore.classList.add('rounded-lg', 'scale-75');
+            recordBtn.classList.add('border-error');
+            recordBtn.classList.remove('border-primary-container');
+          } else {
+            innerCore.classList.add('rounded-full');
+            innerCore.classList.remove('rounded-lg', 'scale-75');
+            recordBtn.classList.remove('border-error');
+            recordBtn.classList.add('border-primary-container');
+          }
+        });
+      }
+    });
+  </script>
+</body></html>

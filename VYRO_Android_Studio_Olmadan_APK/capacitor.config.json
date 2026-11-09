@@ -1,0 +1,8 @@
+{
+  "appId": "com.vyro.social",
+  "appName": "VYRO",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

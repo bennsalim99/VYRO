@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VYRO - Keşfet &amp; Arama</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#6ffbbe",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-fixed-variant": "#5516be",
+            "secondary-fixed-dim": "#c6c0ff",
+            "surface-container-lowest": "#0d0e12",
+            "inverse-primary": "#6d3bd7",
+            "surface-tint": "#d0bcff",
+            "on-primary-fixed": "#23005c",
+            "surface-bright": "#38393e",
+            "secondary-fixed": "#e4dfff",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-tertiary": "#003824",
+            "primary-fixed": "#e9ddff",
+            "on-surface": "#e3e2e8",
+            "on-primary": "#3c0091",
+            "tertiary": "#4edea3",
+            "secondary-container": "#3e1fd1",
+            "on-background": "#e3e2e8",
+            "on-error-container": "#ffdad6",
+            "surface-container-high": "#292a2e",
+            "on-primary-container": "#340080",
+            "error": "#ffb4ab",
+            "outline-variant": "#494454",
+            "surface-variant": "#343439",
+            "background": "#121317",
+            "tertiary-container": "#00a572",
+            "surface-container-low": "#1a1b20",
+            "surface-container": "#1e1f24",
+            "on-tertiary-fixed": "#002113",
+            "surface-container-highest": "#343439",
+            "inverse-on-surface": "#2f3035",
+            "primary-container": "#a078ff",
+            "on-error": "#690005",
+            "on-secondary": "#2700a1",
+            "inverse-surface": "#e3e2e8",
+            "on-secondary-fixed": "#150066",
+            "secondary": "#c6c0ff",
+            "on-secondary-container": "#b6afff",
+            "on-surface-variant": "#cbc3d7",
+            "error-container": "#93000a",
+            "surface-dim": "#121317",
+            "on-secondary-fixed-variant": "#3c1bcf",
+            "surface": "#121317",
+            "on-tertiary-container": "#00311f",
+            "outline": "#958ea0",
+            "primary-fixed-dim": "#d0bcff",
+            "primary": "#d0bcff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 64px); }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Component (from Shared Components JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin py-space-sm bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-none">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-2xl active:scale-95 transition-transform" data-icon="live_tv">live_tv</span>
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary tracking-wider">VYRO</span>
+</div>
+<!-- Desktop Navigation Cluster (Semantic Shell logic) -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Ana Sayfa</a>
+<a class="text-on-surface dark:text-on-surface font-bold border-b-2 border-primary pb-1 text-label-md font-label-md" href="#">Keşfet</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Oluştur</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Canlı</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Profil</a>
+</nav>
+<div class="flex items-center gap-space-sm">
+<button aria-label="Arama" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="search">search</span>
+</button>
+<div class="w-8 h-8 rounded-full border border-primary/40 overflow-hidden ring-2 ring-primary/20">
+<img class="w-full h-full object-cover" data-alt="A stylish close-up portrait of a young digital creator in a dark cyber atmosphere, highlighted with neon purple and electric violet edge rim lighting against a deep AMOLED black background with subtle lens flare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcFnheo8JRp4Nm_hzmFnQ7R8pKPZ7v0w9-qeBcX36luYxf23TlQTVlluym4YTc5p-YdEk5DPpUIV6kXlJtTpf_tVfhewS1-m6HqdbFyRcBqzciZWSyB3ZdSzNBw1VHfM_5bIH9VhhvkTlVJ3WOO0iCkMoMjw9zZuydJZ1tYF5SLEa_VfYze-HpJgsnmgHyYY0NrJ05Bz_mI-CB8dLhTZf-rgx2o-xN5qyyIfRorvY"/>
+</div>
+</div>
+</header>
+<!-- Main Mobile Canvas Container -->
+<main class="w-full max-w-md mx-auto pt-16 pb-safe px-margin flex flex-col gap-space-xl">
+<!-- Üst Arama Çubuğu & Filtreler -->
+<section class="flex flex-col gap-space-md pt-2">
+<!-- Modern Arama Kutusu -->
+<div class="relative w-full flex items-center rounded-xl bg-surface-container-low border border-outline-variant/40 px-space-md py-2.5 transition-all duration-200 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 shadow-sm">
+<span class="material-symbols-outlined text-outline text-xl shrink-0" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none text-on-surface placeholder:text-outline text-body-sm font-body-sm focus:ring-0 focus:outline-none px-space-sm" placeholder="VYRO'da ara, etiket veya kişi bul..." type="text"/>
+<button aria-label="Sesli Arama" class="shrink-0 p-1 text-on-surface-variant hover:text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="mic">mic</span>
+</button>
+</div>
+<!-- Kategori Çipleri (Yatay Kaydırılabilir) -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar -mx-margin px-margin py-0.5">
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary text-label-md font-label-md shadow-[0_0_12px_rgba(160,120,255,0.35)] font-bold transition-transform active:scale-95">
+          Tümü
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Trendler 🔥
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Müzik &amp; Dans
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Oyun &amp; Espor
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Teknoloji
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Komedi
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Moda &amp; Sanat
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all">
+          Yemek
+        </button>
+</div>
+</section>
+<!-- 1. Gündemde Olanlar (Türkiye) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="local_fire_department" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-bold tracking-tight">Gündemde Olanlar</h2>
+</div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Türkiye</span>
+</div>
+<!-- Trend Kartları Bento/Liste Grubu -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/30 divide-y divide-outline-variant/20 overflow-hidden shadow-sm">
+<!-- Trend 1 -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="text-label-lg font-label-lg text-primary/70 pt-0.5">1</span>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold hover:text-primary cursor-pointer transition-colors">#SiberGece</span>
+<span class="text-body-sm font-body-sm text-outline">248.5B Gönderi</span>
+</div>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-high/80 border border-outline-variant/40 text-primary hover:bg-primary-container/20 text-label-sm font-label-sm active:scale-95 transition-all">
+<span>Videoları Gör</span>
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+</button>
+</div>
+<!-- Trend 2 -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="text-label-lg font-label-lg text-primary/70 pt-0.5">2</span>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold hover:text-primary cursor-pointer transition-colors">#YapayZekaSanatı</span>
+<span class="text-body-sm font-body-sm text-outline">182.0B Gönderi</span>
+</div>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-high/80 border border-outline-variant/40 text-primary hover:bg-primary-container/20 text-label-sm font-label-sm active:scale-95 transition-all">
+<span>Videoları Gör</span>
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+</button>
+</div>
+<!-- Trend 3 -->
+<div class="flex items-center justify-between p-space-md hover:bg-surface-container/60 transition-colors">
+<div class="flex items-start gap-space-md">
+<span class="text-label-lg font-label-lg text-primary/70 pt-0.5">3</span>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold hover:text-primary cursor-pointer transition-colors">#MarmaraRotaları</span>
+<span class="text-body-sm font-body-sm text-outline">94.2B Gönderi</span>
+</div>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-high/80 border border-outline-variant/40 text-primary hover:bg-primary-container/20 text-label-sm font-label-sm active:scale-95 transition-all">
+<span>Videoları Gör</span>
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 2. Popüler İçerik Üreticileri -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-bold tracking-tight">Popüler İçerik Üreticileri</h2>
+<a class="text-label-md font-label-md text-primary hover:underline" href="#">Tümünü Gör</a>
+</div>
+<!-- Yatay Kaydırılabilir Kartlar -->
+<div class="flex gap-space-md overflow-x-auto no-scrollbar -mx-margin px-margin py-1">
+<!-- Üretici 1 -->
+<div class="shrink-0 w-36 bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md flex flex-col items-center text-center shadow-sm">
+<div class="relative w-16 h-16 rounded-full overflow-hidden mb-space-sm ring-2 ring-primary/40">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of a trendy male filmmaker named Arda with stylish glasses and confident smile in an atmospheric studio set lit with ambient violet and dark cyan rim lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpea8BZMsvmVllCYhq16DVomsHocoope9q-AoyeCahDun7RdvPXpCsfiZjiKL436S2mu1ki-vyBBIZxQch3CfF8uV7LyEeatyEx6Y33gOj39H2_uyVyuhkU-Jp4AsPemRyUHfgTqmMitXkEtlj34JXvfR3RmmXyY1LsrZAlytvkLivgkQTyrCERa5JGC3M_kGd6l7_oQQq5TMrsnmvVGVGuIk-dJcB-ohpNfadsHY"/>
+<span class="absolute bottom-0 right-0 w-4 h-4 bg-tertiary-container rounded-full border-2 border-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-surface-container-low text-[10px]" data-icon="check">check</span>
+</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold truncate w-full">Arda Deniz</span>
+<span class="text-body-sm font-body-sm text-outline truncate w-full mb-space-md">@ardadeniz</span>
+<button class="w-full py-1.5 px-3 rounded-lg bg-primary-container text-on-primary text-label-sm font-label-sm font-bold shadow-[0_0_12px_rgba(160,120,255,0.3)] active:scale-95 transition-all">
+            Takip Et
+          </button>
+</div>
+<!-- Üretici 2 -->
+<div class="shrink-0 w-36 bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md flex flex-col items-center text-center shadow-sm">
+<div class="relative w-16 h-16 rounded-full overflow-hidden mb-space-sm ring-2 ring-primary/40">
+<img class="w-full h-full object-cover" data-alt="Portrait photography of a female digital artist named Selin with creative neon makeup and modern streetwear, posed gracefully against a high-contrast dark indigo moody background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5dft375hGlLMkdPcvy9Gi7fF00MCGoDcZ1vhBaDcDsCLhSZ1bsM44M9_WApPRopGUwccQafHluYCdqlSM82dyzqdusLqcYWFjjyMQW-rAusx6svhEVw96trpxzGVQS9KBSAZqQEbXUm-RLNvnR6UPEiX-XUjQ0idRlBqnS2tpnhdw-uK_DZmkPDmEIBg6LWbIDktYOupT_JIDr7EhvPl14B1wWXtPSZ67Fi71Kus"/>
+<span class="absolute bottom-0 right-0 w-4 h-4 bg-tertiary-container rounded-full border-2 border-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-surface-container-low text-[10px]" data-icon="check">check</span>
+</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold truncate w-full">Selin Vural</span>
+<span class="text-body-sm font-body-sm text-outline truncate w-full mb-space-md">@selinvural</span>
+<button class="w-full py-1.5 px-3 rounded-lg bg-primary-container text-on-primary text-label-sm font-label-sm font-bold shadow-[0_0_12px_rgba(160,120,255,0.3)] active:scale-95 transition-all">
+            Takip Et
+          </button>
+</div>
+<!-- Üretici 3 -->
+<div class="shrink-0 w-36 bg-surface-container-low rounded-xl border border-outline-variant/30 p-space-md flex flex-col items-center text-center shadow-sm">
+<div class="relative w-16 h-16 rounded-full overflow-hidden mb-space-sm ring-2 ring-primary/40">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male tech creator named Burak sitting in front of neon computer setups with deep purple backlighting and cinematic dark tones, wearing high tech headphones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVxaQy5jwTUbMf5NeousieyBTcQUucq-h9U4ONCHdjl8RR_DADUGakHiXTWE-MSS3RjnBWYASNrTDecDY6V6GedEAM0T1NCOo6ioIuSc05JjUPInmNCiEd7Z5mAMNmYHhn3AdXIJhD8mvcDxTB4y6OcuBsozrTI4EYwU92jvo4pjQ6pRsGz3DBwPbypnbSVHHYDiSo_QxWaf2Zbqe8JMsST8J98G_hyGdLJ0ODYLg"/>
+<span class="absolute bottom-0 right-0 w-4 h-4 bg-tertiary-container rounded-full border-2 border-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-surface-container-low text-[10px]" data-icon="check">check</span>
+</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold truncate w-full">Burak Yılmaz</span>
+<span class="text-body-sm font-body-sm text-outline truncate w-full mb-space-md">@burakyilmaz</span>
+<button class="w-full py-1.5 px-3 rounded-lg bg-primary-container text-on-primary text-label-sm font-label-sm font-bold shadow-[0_0_12px_rgba(160,120,255,0.3)] active:scale-95 transition-all">
+            Takip Et
+          </button>
+</div>
+</div>
+</section>
+<!-- 3. Trend Videolar & Video Zincirleri (Grid) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-bold tracking-tight">Trend Videolar &amp; Video Zincirleri</h2>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<!-- 2 Sütunlu Asimetrik Video Izgarası -->
+<div class="grid grid-cols-2 gap-gutter items-start">
+<!-- Video Kart 1 (Uzun Dikey) -->
+<div class="group relative rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-low h-64 flex flex-col justify-end p-3 active:scale-[0.98] transition-all cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Futuristic cyber city night view filled with flying vehicles, towering skyscrapers drenched in glowing purple holographic billboards, rainy wet reflections on asphalt, high resolution cinematic digital concept art." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQQh3A39nczZ0SVhUsmUSRCjYJa7QQ_hQ57uHUrjZa2zm18P6JflYqnRKvlrDNPjNk-i41Nt6Z3qZbOc2MVrxPZ5L9Y74QHBBne973akiXonANbwi3HCUGZFy3U0LAOKX9joYEFrOIDMqOr3nfZ7zP2dgfGbFPiTlraXAR_PVl7ZKGIpYrsUpvF_b81jdw7Y0JYxkIwODrqNoZd6ATwu_fvr-QkM7yLJi_BTodFKQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Üst Rozetler -->
+<div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary text-label-sm font-label-sm font-bold shadow-[0_0_10px_rgba(160,120,255,0.4)] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="link">link</span>
+              Zincir
+            </span>
+<div class="flex items-center gap-1 bg-surface-container-lowest/70 backdrop-blur-md px-1.5 py-0.5 rounded text-on-surface text-[10px] font-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="visibility">visibility</span>
+              1.2M
+            </div>
+</div>
+<!-- Alt Bilgiler -->
+<div class="relative z-10 flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold line-clamp-1">Siber Şehir Gece Turu</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+              @ardadeniz
+              <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+</span>
+</div>
+</div>
+<!-- Video Kart 2 (Kısa Kart) -->
+<div class="group relative rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-low h-52 flex flex-col justify-end p-3 active:scale-[0.98] transition-all cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Generative artificial intelligence abstract geometric sculpture floating in a dark studio, illuminated by vivid purple and mint green glowing soft lasers, surreal 3D octane rendering." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXUmRPTAOAeN7Dt_3SGR2OZMr2la1n1sUMHlIAjSfQtWff-Fb0zJ3X3bbqkdF6TfXkj08Lg0OjqXqYo4LjKsTmZttqFZIlOmbLx1GSRdkUGwQuXFG3jItcfe53FiRQ2gjWulu3EYcjWEK5b7-iom60vutf0oIkR8qfEB9TtqPPvRNeESiPRXhPdDXBkhLCcElSYh-MoSgIGzKmMttqqDt1ypp6ztbmFUa60ElKkTo')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Üst Rozetler -->
+<div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary text-label-sm font-label-sm font-bold shadow-[0_0_10px_rgba(160,120,255,0.4)] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="link">link</span>
+              Zincir
+            </span>
+<div class="flex items-center gap-1 bg-surface-container-lowest/70 backdrop-blur-md px-1.5 py-0.5 rounded text-on-surface text-[10px] font-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="visibility">visibility</span>
+              840K
+            </div>
+</div>
+<!-- Alt Bilgiler -->
+<div class="relative z-10 flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold line-clamp-1">3D Yapay Zeka Dalgası</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">@selinvural</span>
+</div>
+</div>
+<!-- Video Kart 3 (Kısa Kart) -->
+<div class="group relative rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-low h-52 flex flex-col justify-end p-3 active:scale-[0.98] transition-all cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Dramatic aerial drone photography over coastal cliffs in the Marmara region at twilight, dark moody waters, misty atmospheric mountains, illuminated lighthouse beacon shining purple light." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC26A0ZrUht2USIq9aMWSs03S4p3dev7krfyGXaGPbC4HqxA4z3k9bFE10C8TY0UzQgojUtr1iGvlUTHDYMFITYlGNdaqo3QezWlr9M25QunMo4paePaHA42HHLwq29jV_so14mqLDQjP07NWEv5ETsV0UcJ39WPXeD_Yh0eIxaYOMJvaz-IoVwDIs_KXTXguB73wndz8jVY5XU-MVi_RxS4b9HKVbyNQh_QgJuasM')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Üst Rozetler -->
+<div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-surface text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="play_arrow">play_arrow</span>
+              Öne Çıkan
+            </span>
+<div class="flex items-center gap-1 bg-surface-container-lowest/70 backdrop-blur-md px-1.5 py-0.5 rounded text-on-surface text-[10px] font-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="visibility">visibility</span>
+              520K
+            </div>
+</div>
+<!-- Alt Bilgiler -->
+<div class="relative z-10 flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold line-clamp-1">Gizli Rotalar #1</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">@mertgezgin</span>
+</div>
+</div>
+<!-- Video Kart 4 (Uzun Dikey) -->
+<div class="group relative rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-low h-64 flex flex-col justify-end p-3 active:scale-[0.98] transition-all cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Close up action shot of a gaming esports tournament arena, dynamic neon stage lights, focused gamer with purple ambient keyboard glow against an ultra-dark esports stage." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8J39yf8uJ8oaW8XoM4fTVEnawxWbRJ9idVt2PhvTk6gWQFQ2G111-ZFt3EqvIemrXEnWWaXPt6WBpVwYYIa5NEwBKQGXMoHY2h22ztsqAxgeDOxovp1LuKVB3-2ktctq6Rj2uqjXpjGaHf3ibbhDdhgkG9zh0mJVX3QboiB9T7ZtsFTia9rNkDL5SH6Qd1g2jyVA2mCIlj6uKltB2mQxPeifnuuzeaCdgkFSpR_o')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Üst Rozetler -->
+<div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary text-label-sm font-label-sm font-bold shadow-[0_0_10px_rgba(160,120,255,0.4)] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="link">link</span>
+              Zincir
+            </span>
+<div class="flex items-center gap-1 bg-surface-container-lowest/70 backdrop-blur-md px-1.5 py-0.5 rounded text-on-surface text-[10px] font-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="visibility">visibility</span>
+              2.1M
+            </div>
+</div>
+<!-- Alt Bilgiler -->
+<div class="relative z-10 flex flex-col">
+<span class="text-label-md font-label-md text-on-surface font-bold line-clamp-1">Espor Şampiyonluk Anı</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+              @burakyilmaz
+              <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component (from Shared Components JSON) -->
+<!-- "Keşfet" is the active item according to design intent -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin py-space-xs pb-safe bg-surface-container-low/80 dark:bg-surface-container-low/80 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<!-- Sekme 1: Ana Sayfa -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Ana Sayfa</span>
+</a>
+<!-- Sekme 2: Keşfet (AKTİF DÜĞME) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl drop-shadow-[0_0_8px_rgba(208,188,255,0.6)]" data-icon="explore" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-label-sm font-label-sm font-bold">Keşfet</span>
+</a>
+<!-- Sekme 3: Oluştur -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform" href="#">
+<div class="w-10 h-7 rounded-lg bg-surface-container-high border border-outline-variant/60 flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="add_box">add_box</span>
+</div>
+<span class="text-label-sm font-label-sm mt-0.5">Oluştur</span>
+</a>
+<!-- Sekme 4: Canlı -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform relative" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="sensors">sensors</span>
+<span class="text-label-sm font-label-sm">Canlı</span>
+<span class="absolute top-1 right-2 w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span class="absolute top-1 right-2 w-2 h-2 rounded-full bg-error"></span>
+</a>
+<!-- Sekme 5: Profil -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-space-xs hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-200 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm">Profil</span>
+</a>
+</nav>
+<!-- Interactive script for tag selection and micro-interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Category chips toggle behavior
+      const chips = document.querySelectorAll('section button.rounded-full');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => {
+            c.className = "shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-label-md font-label-md hover:text-primary active:scale-95 transition-all";
+          });
+          chip.className = "shrink-0 px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary text-label-md font-label-md shadow-[0_0_12px_rgba(160,120,255,0.35)] font-bold transition-transform active:scale-95";
+        });
+      });
+    });
+  </script>
+</body></html>

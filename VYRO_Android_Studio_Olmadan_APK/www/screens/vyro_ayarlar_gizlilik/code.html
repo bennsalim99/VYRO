@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>VYRO - Ayarlar ve Gizlilik</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#6ffbbe",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-fixed-variant": "#5516be",
+            "secondary-fixed-dim": "#c6c0ff",
+            "surface-container-lowest": "#0d0e12",
+            "inverse-primary": "#6d3bd7",
+            "surface-tint": "#d0bcff",
+            "on-primary-fixed": "#23005c",
+            "surface-bright": "#38393e",
+            "secondary-fixed": "#e4dfff",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-tertiary": "#003824",
+            "primary-fixed": "#e9ddff",
+            "on-surface": "#e3e2e8",
+            "on-primary": "#3c0091",
+            "tertiary": "#4edea3",
+            "secondary-container": "#3e1fd1",
+            "on-background": "#e3e2e8",
+            "on-error-container": "#ffdad6",
+            "surface-container-high": "#292a2e",
+            "on-primary-container": "#340080",
+            "error": "#ffb4ab",
+            "outline-variant": "#494454",
+            "surface-variant": "#343439",
+            "background": "#08090D",
+            "tertiary-container": "#00a572",
+            "surface-container-low": "#111319",
+            "surface-container": "#181B24",
+            "on-tertiary-fixed": "#002113",
+            "surface-container-highest": "#343439",
+            "inverse-on-surface": "#2f3035",
+            "primary-container": "#a078ff",
+            "on-error": "#690005",
+            "on-secondary": "#2700a1",
+            "inverse-surface": "#e3e2e8",
+            "on-secondary-fixed": "#150066",
+            "secondary": "#c6c0ff",
+            "on-secondary-container": "#b6afff",
+            "on-surface-variant": "#cbc3d7",
+            "error-container": "#93000a",
+            "surface-dim": "#08090D",
+            "on-secondary-fixed-variant": "#3c1bcf",
+            "surface": "#08090D",
+            "on-tertiary-container": "#00311f",
+            "outline": "#232736",
+            "primary-fixed-dim": "#d0bcff",
+            "primary": "#8B5CF6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #08090D;
+      color: #e3e2e8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Android Smooth Scroll */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen text-on-surface antialiased flex justify-center selection:bg-primary/30">
+<!-- Mobile Screen Container -->
+<div class="w-full max-w-md min-h-screen bg-background flex flex-col relative pb-10">
+<!-- Top Status Bar & App Bar for Settings (Focused Sub-Page with Back Action) -->
+<header class="sticky top-0 z-40 bg-[#08090D]/85 backdrop-blur-xl border-b border-[#232736]/40 px-margin pt-4 pb-3 flex items-center justify-between">
+<button aria-label="Geri Dön" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all bg-surface-container-low/60 border border-[#232736]" onclick="history.back()">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm text-on-surface tracking-tight text-center font-bold">
+        Ayarlar ve Gizlilik
+      </h1>
+<div class="w-10 h-10 flex items-center justify-center opacity-0 pointer-events-none">
+<span class="material-symbols-outlined">more_vert</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-4 space-y-6">
+<!-- Profile Summary Card -->
+<section class="bg-[#111319] border border-[#232736] rounded-xl p-space-md shadow-sm relative overflow-hidden transition-all active:scale-[0.99]">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-primary to-secondary-container">
+<img class="w-full h-full rounded-full object-cover bg-surface-container-high" data-alt="Modern cinematic portrait of a charismatic Turkish digital creator named Baris, lit with intense dark violet and cyan studio neon lights against an obsidian high-tech backdrop, high detail professional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoGYMXhIwm2k38ru_420vCT_MbQHTXqIERe0Z9YBA36R9fGiPRsndrTbvNIlzXihZGpidFjQvLZMwWiSw_dVRWqgnIe5Vx14na0f9l-ZoZeoDft22symGTq7z8lPmHyG5vFijkLrw_Oc3T-MQAhlshEW_jUgngKof61ZrR9mIUnSKudDARYQx0CtCkJIlAEmbRZrhEg5LDiVkeG4uE_XwHXuqUSdGdZqxudiEZq_U"/>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-[#111319]" title="Çevrimiçi"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-headline-sm font-headline-sm text-on-surface font-semibold tracking-tight">Barış Özkan</span>
+<!-- Verified Badge -->
+<span class="inline-flex items-center justify-center text-[#10B981]" title="Doğrulanmış Hesap">
+<span class="material-symbols-outlined fill text-[18px]">verified</span>
+</span>
+</div>
+<span class="text-body-sm font-body-sm text-outline tracking-normal">@baris.ozkan</span>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+<span class="text-label-sm font-label-sm text-tertiary font-medium">Doğrulanmış Hesap</span>
+</div>
+</div>
+</div>
+<!-- Manage Profile Action -->
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors p-2 rounded-lg bg-surface-container/50 border border-[#232736]/60 active:scale-95">
+<span class="text-label-md font-label-md font-medium text-primary hidden xs:inline">Profili Yönet</span>
+<span class="material-symbols-outlined text-[20px] text-primary">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Group 1: Hesap & Güvenlik -->
+<section class="space-y-2">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider px-1 font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">shield_person</span>
+          Hesap &amp; Güvenlik
+        </h2>
+<div class="bg-[#111319] border border-[#232736] rounded-xl divide-y divide-[#232736]/60 overflow-hidden">
+<!-- Hesap Bilgileri -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Hesap Bilgileri</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">E-posta, Telefon, Şifre Değiştir</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- İki Adımlı Doğrulama -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">İki Adımlı Doğrulama</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">Hesabını ekstra korumaya al</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-tertiary-container/30 text-tertiary border border-tertiary/40">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                Açık
+              </span>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Güvenlik Uyarıları ve Cihazlar -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">devices</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Güvenlik Uyarıları ve Cihazlar</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">2 Aktif Cihaz • İstanbul, TR</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Group 2: Gizlilik & İçerik -->
+<section class="space-y-2">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider px-1 font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">visibility_lock</span>
+          Gizlilik &amp; İçerik
+        </h2>
+<div class="bg-[#111319] border border-[#232736] rounded-xl divide-y divide-[#232736]/60 overflow-hidden">
+<!-- Gizli Hesap (Toggle Switch) -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Gizli Hesap</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">Sadece onayladığın takipçiler görür</p>
+</div>
+</div>
+<!-- Android Style Glow Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="privateAccountToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-[#181B24] border border-[#2D3244] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:shadow-[0_0_12px_rgba(139,92,246,0.6)]"></div>
+</label>
+</div>
+<!-- Video Zincirlerine İzin Ver -->
+<div class="p-3.5 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">auto_stories</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Video Zincirlerine İzin Ver</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">Re-mix ve düet etkileşimi</p>
+</div>
+</div>
+</div>
+<!-- Segmented Selector Pills -->
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-[#08090D] border border-[#232736] rounded-lg mt-1 text-center" id="chainPermissionSelector">
+<button class="py-1.5 text-label-md font-label-md rounded bg-primary text-white shadow-[0_0_10px_rgba(139,92,246,0.35)] transition-all font-semibold" data-value="everyone" type="button">
+                Herkes
+              </button>
+<button class="py-1.5 text-label-md font-label-md rounded text-outline hover:text-on-surface transition-all font-medium" data-value="followers" type="button">
+                Takipçiler
+              </button>
+<button class="py-1.5 text-label-md font-label-md rounded text-outline hover:text-on-surface transition-all font-medium" data-value="nobody" type="button">
+                Hiç kimse
+              </button>
+</div>
+</div>
+<!-- Yorum ve Etiketleme İzinleri -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Yorum ve Etiketleme İzinleri</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">Filtrelenen kelimeler, mention kontrolleri</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Engellenen Kullanıcılar -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Engellenen Kullanıcılar</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">Engellediğin profilleri yönet</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant border border-[#2D3244]">
+                3 Kişi
+              </span>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Group 3: Destek & Hakkında -->
+<section class="space-y-2">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider px-1 font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">help_outline</span>
+          Destek &amp; Hakkında
+        </h2>
+<div class="bg-[#111319] border border-[#232736] rounded-xl divide-y divide-[#232736]/60 overflow-hidden">
+<!-- Sorun Bildir & Şikâyet Et -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Sorun Bildir &amp; Şikâyet Et</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">Teknik arıza veya kural ihlali</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Topluluk Kuralları -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-container/30 transition-colors cursor-pointer group active:bg-surface-container/60">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Topluluk Kuralları</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">VYRO güvenlik ve nezaket rehberi</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- VYRO Sürüm Bilgisi -->
+<div class="p-3.5 flex items-center justify-between bg-surface-container-low/40">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-[#181B24] border border-[#2D3244] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">VYRO Sürüm</p>
+<p class="text-body-sm font-body-sm text-outline text-xs">En son güncel sürüm yüklü</p>
+</div>
+</div>
+<span class="text-label-sm font-label-sm font-mono text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
+              2.4.0 (Türkiye)
+            </span>
+</div>
+</div>
+</section>
+<!-- Danger Zone / Sign Out Button -->
+<section class="pt-2 pb-6">
+<button class="w-full py-3.5 px-4 rounded-xl bg-error-container/20 border border-error/30 text-error hover:bg-error-container/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_16px_rgba(239,68,68,0.15)] group font-label-lg font-bold" id="logoutBtn">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-0.5 transition-transform">logout</span>
+          Çıkış Yap
+        </button>
+<p class="text-center text-outline text-[11px] mt-3">Hesabınızdan çıkış yaptığınızda oturumunuz güvenle kapatılır.</p>
+</section>
+</main>
+</div>
+<!-- Interactive JavaScript for micro-interactions -->
+<script>
+    // Segmented switch functionality for Chain Permissions
+    const selectorButtons = document.querySelectorAll('#chainPermissionSelector button');
+    selectorButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectorButtons.forEach(b => {
+          b.className = 'py-1.5 text-label-md font-label-md rounded text-outline hover:text-on-surface transition-all font-medium';
+        });
+        btn.className = 'py-1.5 text-label-md font-label-md rounded bg-primary text-white shadow-[0_0_10px_rgba(139,92,246,0.35)] transition-all font-semibold';
+      });
+    });
+
+    // Logout confirmation interaction
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      if (confirm("VYRO hesabınızdan çıkış yapmak istediğinize emin misiniz?")) {
+        alert("Oturum kapatıldı.");
+      }
+    });
+  </script>
+</body></html>
