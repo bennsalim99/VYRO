@@ -4,7 +4,8 @@ name: VYRO Android APK
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -22,19 +23,23 @@ jobs:
         with:
           node-version: 22
 
-      - name: Java kur
+      - name: Java 21 kur
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
+
+      - name: Java sürümünü kontrol et
+        run: java -version
 
       - name: Android SDK kur
         uses: android-actions/setup-android@v3
         with:
           packages: 'platform-tools'
 
-      - name: Gerekli Android paketlerini yükle
+      - name: Android SDK paketlerini yükle
         run: |
+          yes | sdkmanager --licenses
           sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
 
       - name: Bağımlılıkları kur
