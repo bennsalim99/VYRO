@@ -32,12 +32,13 @@ jobs:
       - name: Android SDK kur
         uses: android-actions/setup-android@v3
         with:
-          packages: 'platform-tools platforms;android-35;build-tools;35.0.0'
+          packages: |
+            platform-tools
+            platforms;android-35
+            build-tools;35.0.0
 
-      - name: Android SDK bileşenlerini kontrol et
-        run: |
-          sdkmanager --list_installed
-          yes | sdkmanager --licenses
+      - name: Android SDK kontrol
+        run: sdkmanager --list_installed
 
       - name: Bağımlılıkları kur
         working-directory: VYRO_Android_Studio_Olmadan_APK
