@@ -1,80 +1,36 @@
-# VYRO Android — Başlangıç paketi
+# VYRO Android — Yerel çalışan prototip
 
-Bu ZIP, Stitch'ten gelen 9 tasarım ekranını korur ve bunların yanında Android'e paketlenebilen çalışan bir başlangıç uygulaması sunar.
+Bu sürüm, GitHub Actions ile Android APK olarak derlenebilen Capacitor uygulamasıdır.
 
-## Gerçekçi durum
-- Uygulama kabuğu, sayfa geçişleri, e-posta ile kayıt/giriş, video yükleme/oynatma, beğeni, yorum, keşfet ve seri listeleme kodları dahildir.
-- Gerçek çok kullanıcılı kullanım için kendi ücretsiz Supabase projenin URL ve anon key değerlerini eklemelisin.
-- Ücretsiz servislerin kota ve dosya sınırları vardır. Sınırsız video depolama veya sınırsız canlı yayın ücretsiz değildir.
-- Canlı yayın ekranı şimdilik açıkça hazırlık durumundadır; gerçek yayın için ayrıca LiveKit/başka bir WebRTC sunucusu entegrasyonu gerekir.
-- Mesajlaşma, tam takipçi sayıları, video zinciri oluşturma arayüzü, gelişmiş öneri algoritması ve yönetici moderasyon paneli bu ilk başlangıç sürümünde tamamlanmış değildir.
-- APK bu ZIP'in içinde hazır değildir; Android SDK bulunan bir bilgisayarda derlenir.
+## Bu sürümde gerçekten çalışanlar
+- Alt menü ve ekran geçişleri
+- Yerel profil adı (bu cihazda saklanır; çevrimiçi hesap değildir)
+- Keşfet araması ve filtreleri
+- Demo akış kartları
+- Beğeni, yorum, takip ve paylaşım metni (bu cihazda saklanır)
+- Galeriden video seçme, önizleme, cihazın IndexedDB alanına kaydetme ve tekrar oynatma
+- Yerel seri oluşturma/silme
+- Canlı ekranında kamera/mikrofon izni isteme, cihaz önizlemesi ve kameralar arasında geçiş
 
-## 1. Ücretsiz Supabase projesi oluştur
-1. https://supabase.com adresinde hesap aç.
-2. Yeni proje oluştur. Bölge olarak sana yakın bir bölge seç.
-3. Proje açılınca Project Settings > API bölümünden Project URL ve anon/public key değerlerini al.
-4. `www/config.js` dosyasını metin düzenleyiciyle aç ve iki alanı doldur.
-5. `supabase/schema.sql` dosyasının tamamını Supabase Dashboard > SQL Editor içine yapıştırıp Run'a bas.
-6. Authentication > Providers > Email bölümünde e-posta girişini etkin tut. İlk test için e-posta doğrulamasını açık bırakman önerilir.
-7. Database > Replication / Publications kısmında `videos` tablosu için Realtime'ı etkinleştir.
+## Bu sürümde henüz çevrimiçi olmayanlar
+- Başka kullanıcıların cihazlarına video/yorum/beğeni senkronizasyonu
+- Gerçek e-posta hesabı ve çok cihazlı profil
+- İnternet üzerinden çok izleyicili canlı yayın
+- Gerçek push bildirimleri ve özel mesajlar
 
-**Güvenlik:** `service_role` anahtarını uygulamaya veya ZIP'e ASLA koyma. Sadece anon/public key kullan. SQL içindeki RLS politikalarını kapatma.
+Yerel veriler yalnızca bu telefonda/uygulama kurulumunda bulunur. Uygulama kaldırılırsa Android uygulama verileri de silinebilir. Demo akıştaki içerikler örnek kartlardır; gerçek kullanıcı gönderileri değildir. Canlı ekranı yalnızca kamera önizlemesi yapar, başka kişilere yayın göndermez.
 
-## 2. Windows'ta Android APK hazırlığı
-Gerekenler:
-- Node.js LTS
-- Android Studio (Android SDK ve Platform Tools bileşenleri)
-- JDK 17 (Android Studio'nun gömülü JDK'sı kullanılabilir)
+## APK üretme (Android Studio olmadan)
+1. Bu ZIP'in içeriğini GitHub deponun köküne yükle; mevcut dosyaların üzerine yaz.
+2. `.github/workflows/android.yml` dosyasının depoda bulunduğunu doğrula.
+3. GitHub > Actions > VYRO Android APK bölümüne gir.
+4. En son çalışmanın yeşil tikle bitmesini bekle.
+5. Artifacts bölümünden `VYRO-debug-APK` dosyasını indir.
+6. ZIP'i telefonda aç ve `app-debug.apk` dosyasını kur.
 
-1. ZIP'i örneğin `C:\\VYRO` klasörüne çıkar.
-2. Bu klasörde terminal/CMD aç.
-3. Komutları sırayla çalıştır:
+Debug APK test içindir; mağaza yayını için ayrıca imzalı release APK gerekir.
 
-```bash
-npm install
-npx cap add android
-npx cap sync android
-npx cap open android
-```
-
-4. Android Studio açılınca Gradle senkronizasyonunun bitmesini bekle.
-5. Test için telefonunu USB hata ayıklama ile bağlayıp Run'a basabilir veya Build > Build Bundle(s) / APK(s) > Build APK(s) seçebilirsin.
-6. APK genellikle `android/app/build/outputs/apk/debug/app-debug.apk` konumunda oluşur.
-7. APK'yı telefona aktar ve kur. Telefonda yalnızca güvendiğin kaynaktan aldığın APK'ları kur.
-
-## 3. Her kod değişikliğinden sonra
-Proje klasöründe:
-```bash
-npx cap sync android
-```
-Sonra Android Studio'da tekrar çalıştır/derle.
-
-## 4. Uptodown'a yükleme
-1. Önce debug değil, imzalı release APK üret.
-2. Uptodown geliştirici hesabı ve yayın başvuru sürecini kontrol et.
-3. Uygulama adı, açıklama, ikon, ekran görüntüleri, gizlilik politikası ve iletişim e-postası hazırla.
-4. Uygulama içindeki kullanıcı hesabı silme, raporlama, engelleme ve içerik moderasyonu akışları tamamlanmadan herkese açık yayın yapma.
-
-## 5. Ücretsiz kullanım notları
-Supabase ücretsiz katmanıyla prototip ve küçük test yapılabilir; kullanım, depolama, bant genişliği, uyku/aktiflik ve limitler değişebilir. Video uygulamaları bant genişliğini hızlı tüketir. Gerçek kullanıcı sayısı büyüdüğünde ücretsiz plan yeterli olmayabilir. Canlı yayın da ayrıca altyapı ve kota gerektirir.
-
-## Tasarım dosyaları
-`www/screens/` içinde Stitch'ten gelen HTML ve ekran görüntüleri korunmuştur. İlk çalışan kabuk `www/index.html` dosyasıdır.
-
-
-## 6. Android Studio KULLANMADAN APK oluşturma (GitHub Actions)
-Bu yöntem Android Studio'yu bilgisayarına kurmadan APK derler. GitHub hesabı ve internet gerekir.
-
-1. ZIP'i çıkar ve GitHub'da yeni, boş bir repository oluştur.
-2. Çıkarılan klasördeki tüm dosyaları repository'ye yükle (GitHub web arayüzünden **Add file > Upload files** da kullanabilirsin).
-3. `.github/workflows/android.yml` dosyasının da yüklendiğini kontrol et. GitHub web arayüzü gizli `.github` klasörünü göstermeyebilir; dosyayı ayrıca oluşturman gerekirse aynı yol ve içerikle ekle.
-4. Repository'de **Actions** sekmesine gir.
-5. **VYRO Android APK** iş akışını açıp **Run workflow** seçeneğine bas.
-6. İşlem tamamlanınca yeşil başarılı çalışmaya gir.
-7. Sayfanın altındaki **Artifacts** bölümünden `VYRO-debug-APK` dosyasını indir.
-8. ZIP içindeki `app-debug.apk` dosyasını Android telefona gönderip kur.
-
-Bu debug APK test içindir; mağazaya dağıtılacak imzalı release APK değildir. Telefonda "bilinmeyen uygulamaları yükleme" izni istenebilir. Yalnızca kendi oluşturduğun APK'yı kur.
-
-GitHub Actions ücretsiz kullanım kotasına ve hesap/repository koşullarına tabidir. Build sırasında hata çıkarsa Actions logundaki kırmızı hata metnini gönder.
+## Notlar
+- Video yüklemeleri cihazın IndexedDB depolamasında tutulur. Büyük videolar telefonun boş alanına bağlı olarak kaydedilemeyebilir.
+- Kamera izni Android WebView/cihaz üreticisine göre değişebilir. İzin verilmezse Android uygulama ayarlarından kamera ve mikrofon izinlerini aç.
+- Gerçek çok kullanıcılı sosyal ağ ve canlı yayın için güvenli sunucu, kimlik doğrulama, veritabanı kuralları, depolama ve yayın sunucusu yapılandırması ayrıca yapılmalıdır.
